@@ -2,6 +2,7 @@ package com.example.hangman;
 
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import javafx.fxml.Initializable;
@@ -11,7 +12,8 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         int hits = 0;
-        char GuessFromUser;
+        char guessFromUser;
+        ArrayList<Character> guesses = new ArrayList<Character>();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -24,14 +26,16 @@ public class HelloController implements Initializable {
 
         while (hits <= 3) {
             System.out.println("Enter a letter :");
-            GuessFromUser = scanner.next(".").charAt(0);
-            GuessFromUser = Character.toUpperCase(GuessFromUser);
-            System.out.println("you chose " + GuessFromUser);
+            guessFromUser = scanner.next(".").charAt(0);
+            guessFromUser = Character.toUpperCase(guessFromUser);
+            System.out.println("you chose " + guessFromUser);
+            guesses.add(guessFromUser);
+
 
             for (int i = 0; i < astrikGuess.length; i++) {
                 System.out.println(astrikGuess[i]);
                 //cycle through the array for a match
-                if (GuessFromUser == astrikGuess[i]) {
+                if (guessFromUser == astrikGuess[i]) {
                     System.out.println("Hit");
                     hits++;
                 } else {
@@ -41,7 +45,7 @@ public class HelloController implements Initializable {
         }
 
         System.out.println("game over");
-        System.out.println("Hits ="+hits);
+        System.out.println("Hits =" + hits);
 
     }
 }
