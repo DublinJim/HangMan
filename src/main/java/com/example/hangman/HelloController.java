@@ -13,7 +13,7 @@ public class HelloController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         int hits = 0;
         char guessFromUser;
-        ArrayList<Character> guesses = new ArrayList<Character>();
+        ArrayList<Character> guessesList = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -23,14 +23,20 @@ public class HelloController implements Initializable {
         String wordToGuess = "CAT";
         char[] astrikGuess = wordToGuess.toCharArray();
 
-
         while (hits <= 3) {
             System.out.println("Enter a letter :");
             guessFromUser = scanner.next(".").charAt(0);
             guessFromUser = Character.toUpperCase(guessFromUser);
             System.out.println("you chose " + guessFromUser);
-            guesses.add(guessFromUser);
 
+            // the guess char to the list and check if previously used.
+            guessesList.add(guessFromUser);
+
+            for (int i = 0; i < guessesList.size(); i++) {
+                System.out.println("comparing " + guessFromUser + " to " + guessesList.get(i));
+                if (guessFromUser == guessesList.get(i))
+                    System.out.println("You already used " + guessFromUser);
+            }
 
             for (int i = 0; i < astrikGuess.length; i++) {
                 System.out.println(astrikGuess[i]);
