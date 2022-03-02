@@ -14,28 +14,30 @@ public class HelloController implements Initializable {
         int hits = 0;
         char guessFromUser;
         ArrayList<Character> guessesList = new ArrayList<>();
-
         Scanner scanner = new Scanner(System.in);
-
-        //input the char
 
         //convert the string to a char array
         String wordToGuess = "CAT";
         char[] astrikGuess = wordToGuess.toCharArray();
-
+        guessesList.add('.');
+//main loop
         while (hits <= 3) {
             System.out.println("Enter a letter :");
+
             guessFromUser = scanner.next(".").charAt(0);
             guessFromUser = Character.toUpperCase(guessFromUser);
             System.out.println("you chose " + guessFromUser);
 
-            // the guess char to the list and check if previously used.
-            guessesList.add(guessFromUser);
+            //check if previously used
 
             for (int i = 0; i < guessesList.size(); i++) {
-                System.out.println("comparing " + guessFromUser + " to " + guessesList.get(i));
-                if (guessFromUser == guessesList.get(i))
-                    System.out.println("You already used " + guessFromUser);
+                while (guessFromUser == guessesList.get(i)) {
+                    System.out.println("You already used " + guessFromUser + ", try again");
+                    System.out.println("Enter a letter :");
+                    guessFromUser = scanner.next(".").charAt(0);
+                    guessFromUser = Character.toUpperCase(guessFromUser);
+                    System.out.println("you chose " + guessFromUser);
+                }
             }
 
             for (int i = 0; i < astrikGuess.length; i++) {
@@ -47,11 +49,34 @@ public class HelloController implements Initializable {
                 } else {
                     System.out.println("Miss");
                 }
-            }
-        }
 
-        System.out.println("game over");
-        System.out.println("Hits =" + hits);
+            }
+            hits++;
+
+            guessesList.add(guessFromUser);
+        }
+        System.out.println("hits " + hits);
+        System.out.println("done");
 
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
