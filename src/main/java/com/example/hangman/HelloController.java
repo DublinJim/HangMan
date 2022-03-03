@@ -21,7 +21,7 @@ public class HelloController implements Initializable {
         char[] astrikGuess = wordToGuess.toCharArray();
         guessesList.add('.');
 //main loop
-        while (hits <= 3) {
+        while (hits <= 20) {
             System.out.println("Enter a letter :");
 
             guessFromUser = scanner.next(".").charAt(0);
@@ -38,24 +38,26 @@ public class HelloController implements Initializable {
                     guessFromUser = Character.toUpperCase(guessFromUser);
                     System.out.println("you chose " + guessFromUser);
                 }
+
             }
 
-            for (int i = 0; i < astrikGuess.length; i++) {
-                System.out.println(astrikGuess[i]);
+            for (char guess : astrikGuess) {
+                System.out.println(guess);
                 //cycle through the array for a match
-                if (guessFromUser == astrikGuess[i]) {
+                if (guessFromUser == guess) {
                     System.out.println("Hit");
-                    hits++;
+
                 } else {
                     System.out.println("Miss");
                 }
 
             }
             hits++;
-
+            //add the char to the used list
             guessesList.add(guessFromUser);
+            System.out.println("You have used " + hits+" of 20");
         }
-        System.out.println("hits " + hits);
+
         System.out.println("done");
 
     }
