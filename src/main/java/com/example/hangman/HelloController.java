@@ -23,7 +23,7 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        instructionText1.setText(" Begin - Enter your letter");
     }
 
     @FXML
@@ -32,47 +32,28 @@ public class HelloController implements Initializable {
 
         ArrayList<Character> guessesList = new ArrayList<>();
         String wordToGuess = "CAT";
-        char guessFromUser;
+        char guessFromUser = guessBoxInput.getCharacters().charAt(0);
         char[] astrikGuess = wordToGuess.toCharArray();
         guessesList.add('.');
 
-        while (hits <= 3) {
-            instructionText1.setText("Enter a letter :");
+        testOutTxt.setText(String.valueOf(guessFromUser));
+
+        while (hits <= 5) {
+            instructionText1.setText("Enter a letter");
 
             guessFromUser = guessBoxInput.getCharacters().charAt(0);
             guessFromUser = Character.toUpperCase(guessFromUser);
-            instructionText1.setText("you chose " + guessFromUser);
+            String toDisplayGuessChar = String.valueOf(guessFromUser);
+            instructionText1.setText("You chose " + toDisplayGuessChar);
 
-            //check if previously used
-
-            for (int i = 0; i < guessesList.size(); i++) {
-                while (guessFromUser == guessesList.get(i)) {
-                    testOutTxt.setText("You already used " + guessFromUser + ", try again");
-
-                    instructionText1.setText("Enter a letter :");
-                    guessFromUser = guessBoxInput.getCharacters().charAt(0);
-                    guessFromUser = Character.toUpperCase(guessFromUser);
-                    testOutTxt.setText("you chose " + guessFromUser);
-                }
-
-            }
-
-            for (char guess : astrikGuess) {
-                System.out.println(guess);
-                //cycle through the array for a match
-                if (guessFromUser == guess) {
-                    System.out.println("Hit");
-
-                } else {
-                    System.out.println("Miss");
-                }
+            for (int i = 0; i <guessesList.size() ; i++) {
 
             }
             hits++;
-            //add the char to the used list
-            guessesList.add(guessFromUser);
-            System.out.println("You have used " + hits + " of 20");
+
+
         }
+
 
     }
 
