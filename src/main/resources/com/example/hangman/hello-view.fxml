@@ -13,7 +13,7 @@
       <Text layoutX="320.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Guess" />
       <TextField fx:id="guessBoxInput" layoutX="410.0" layoutY="221.0" onAction="#grabAnswer" prefHeight="27.0" prefWidth="23.0" />
       <Text layoutX="368.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="****" />
-      <Text fx:id="testOutTxt" layoutX="353.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="function" />
+      <Text fx:id="testOutTxt" layoutX="356.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="function" wrappingWidth="82.93620300292969" />
       <Button layoutX="689.0" layoutY="35.0" mnemonicParsing="false" onAction="#quitApp" text="quit" />
       <Text fx:id="instructionText1" layoutX="368.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Label layoutX="51.0" layoutY="39.0" text="of" />
