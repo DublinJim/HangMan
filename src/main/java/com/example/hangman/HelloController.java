@@ -15,7 +15,7 @@ public class HelloController implements Initializable {
 
     private static char[] chars;
     boolean foundLetter;
-    int hits = 0;
+    int hits = 1;
     int maxHits = 5;
     @FXML
     private TextField guessBoxInput;
@@ -38,7 +38,7 @@ public class HelloController implements Initializable {
         guessBoxInput.setPrefWidth(30);
         guessBoxInput.setMaxWidth(80);
         guessBoxInput.clear();
-        hitsBox.setText(String.valueOf(0));
+        hitsBox.setText(String.valueOf(1));
         hitBox2.setText(String.valueOf(maxHits));
 
     }
@@ -68,12 +68,11 @@ public class HelloController implements Initializable {
         //convert the word to guess to an array of chars
         char[] astrikGuess = wordToGuess.toCharArray();
 
-        //add a char to get a count (possible remove)
-        guessesList.add('.');
+
 
         testOutTxt.setText(String.valueOf(guessFromUser));
 
-        while (hits <= maxHits) {
+        while (hits < maxHits) {
             instructionText1.setText("Enter a letter");
             guessFromUser = guessBoxInput.getCharacters().charAt(0);
             guessFromUser = Character.toUpperCase(guessFromUser);
@@ -89,23 +88,30 @@ public class HelloController implements Initializable {
             }
             if (foundLetter) {
                 testOutTxt.setText("Hit!");
-                foundLetter=false;
+                //reset the flag
+                foundLetter = false;
+
+
             } else {
                 testOutTxt.setText("Not found");
 
             }
 
+            guessesList.add(guessFromUser);
+
+
             guessBoxInput.clear();
             System.out.println(" input box size after clear = " + guessBoxInput.getLength());
-            guessesList.add(guessFromUser);
+
 
             hits++;
             hitsBox.setText(String.valueOf(hits));
 
         }
+        instructionText1.setText("GAME OVER");
 
-        instructionText1.setText("done");
     }
+
 
     @FXML
     void quitApp() {
