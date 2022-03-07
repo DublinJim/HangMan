@@ -89,8 +89,10 @@ public class HelloController implements Initializable {
             }
             if (foundLetter) {
                 testOutTxt.setText("Hit!");
+                foundLetter=false;
             } else {
                 testOutTxt.setText("Not found");
+
             }
 
             guessBoxInput.clear();
