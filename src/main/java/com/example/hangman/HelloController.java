@@ -12,6 +12,8 @@ import javafx.scene.text.Text;
 
 public class HelloController implements Initializable {
 
+
+    private static char[] chars;
     boolean foundLetter;
     int hits = 0;
     int maxHits = 5;
@@ -26,6 +28,9 @@ public class HelloController implements Initializable {
     @FXML
     private Text hitsBox;
 
+    @FXML
+    private Text guessWord;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         instructionText1.setText(" Begin - Enter your letter");
@@ -35,15 +40,26 @@ public class HelloController implements Initializable {
         guessBoxInput.clear();
         hitsBox.setText(String.valueOf(0));
         hitBox2.setText(String.valueOf(maxHits));
+
     }
 
     @FXML
     void grabAnswer() {
 
+        String wordToGuess = "CAT";
+        char[] chars = wordToGuess.toCharArray();
+        //hide the word to be guessed
+        for (int i = 0; i < wordToGuess.length(); i++) {
+
+            chars[i] = 'X';
+
+        }
+
+        String maskedWord = String.valueOf(chars);
+
+        guessWord.setText(maskedWord);
         hitBox2.setText(String.valueOf(maxHits));
         ArrayList<Character> guessesList = new ArrayList<>();
-
-        String wordToGuess = "CAT";
 
         //get a single char from the user
         System.out.println(" input box size before = " + guessBoxInput.getLength());
@@ -73,8 +89,7 @@ public class HelloController implements Initializable {
             }
             if (foundLetter) {
                 testOutTxt.setText("Hit!");
-            }else
-            {
+            } else {
                 testOutTxt.setText("Not found");
             }
 
