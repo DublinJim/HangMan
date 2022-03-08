@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -22,6 +21,7 @@ public class HelloController implements Initializable {
     char guessFromUser;
     char[] chars;
     char[] astrikGuess;
+
 
     @FXML
     private TextField guessBoxInput;
@@ -67,11 +67,6 @@ public class HelloController implements Initializable {
         guessBoxInput.requestFocus();
         wordToGuess = "CAT";
 
-    }
-
-    @FXML
-    void grabAnswer() {
-
         chars = wordToGuess.toCharArray();
         //hide the word to be guessed
         for (int i = 0; i < wordToGuess.length(); i++) {
@@ -81,6 +76,13 @@ public class HelloController implements Initializable {
         maskedWord = String.valueOf(chars);
 
         guessWord.setText(maskedWord);
+
+    }
+
+    @FXML
+    void grabAnswer() {
+
+
         hitBox2.setText(String.valueOf(maxHits));
         ArrayList<Character> guessesList = new ArrayList<>();
 
