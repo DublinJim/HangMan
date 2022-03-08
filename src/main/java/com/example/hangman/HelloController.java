@@ -12,24 +12,34 @@ import javafx.scene.text.Text;
 
 public class HelloController implements Initializable {
 
-
     private static char[] chars;
     boolean foundLetter;
     int hits = 1;
     int maxHits = 5;
     @FXML
     private TextField guessBoxInput;
+
     @FXML
-    private Text testOutTxt;
-    @FXML
-    private Text instructionText1;
+    private Text guessWord;
+
     @FXML
     private Text hitBox2;
+
     @FXML
     private Text hitsBox;
 
     @FXML
-    private Text guessWord;
+    private Text instructionText1;
+
+    @FXML
+    private Text instructionTxt2;
+
+    @FXML
+    private Text instructionTxt3;
+
+    @FXML
+    private Text testOutTxt;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -68,16 +78,15 @@ public class HelloController implements Initializable {
         //convert the word to guess to an array of chars
         char[] astrikGuess = wordToGuess.toCharArray();
 
-
-
         testOutTxt.setText(String.valueOf(guessFromUser));
 
         while (hits < maxHits) {
             instructionText1.setText("Enter a letter");
-            guessFromUser = guessBoxInput.getCharacters().charAt(0);
-            guessFromUser = Character.toUpperCase(guessFromUser);
-            String toDisplayGuessChar = String.valueOf(guessFromUser);
-            testOutTxt.setText("You chose " + toDisplayGuessChar);
+
+            guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
+            instructionTxt2.setText("You chose " + guessFromUser);
+
+            // TODO: 3/7/2022 check the letter was not previously used
 
             //Check for a correct letter
             for (int i = 0; i < astrikGuess.length; i++) {
@@ -88,28 +97,24 @@ public class HelloController implements Initializable {
             }
             if (foundLetter) {
                 testOutTxt.setText("Hit!");
+                instructionTxt3.setText("Well done");
                 //reset the flag
                 foundLetter = false;
-
-
             } else {
                 testOutTxt.setText("Not found");
-
+                instructionTxt3.setText("Try again");
             }
 
             guessesList.add(guessFromUser);
 
-
             guessBoxInput.clear();
             System.out.println(" input box size after clear = " + guessBoxInput.getLength());
-
 
             hits++;
             hitsBox.setText(String.valueOf(hits));
 
         }
         instructionText1.setText("GAME OVER");
-
     }
 
 
