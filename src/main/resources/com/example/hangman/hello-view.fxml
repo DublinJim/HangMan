@@ -22,7 +22,7 @@
       <Text fx:id="hitBox2" layoutX="69.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hit" />
       <Text fx:id="instructionTxt2" layoutX="307.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: ariel;" text="Text" />
       <Text fx:id="instructionTxt3" layoutX="307.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: ariel;" text="Text" />
-      <Button fx:id="playBtn" layoutX="609.0" layoutY="36.0" mnemonicParsing="false" onAction="#showTheInputs" text="Play" />
+      <Button fx:id="playBtn" layoutX="609.0" layoutY="36.0" mnemonicParsing="false" onAction="#startTheGame" text="Play" />
       
    </children>
 </AnchorPane>

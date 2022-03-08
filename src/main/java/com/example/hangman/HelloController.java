@@ -62,26 +62,27 @@ public class HelloController implements Initializable {
 
 
     @FXML
-    void showTheInputs() {
+    void startTheGame() {
+        wordToGuess = "CAT";
         guessBoxInput.setVisible(true);
         guessBoxInput.requestFocus();
-        wordToGuess = "CAT";
+        hits=1;
+        hitsBox.setText(String.valueOf(hits));
+        instructionTxt1.setText("Enter a letter");
+
 
         chars = wordToGuess.toCharArray();
         //hide the word to be guessed
         for (int i = 0; i < wordToGuess.length(); i++) {
             chars[i] = 'X';
         }
-
         maskedWord = String.valueOf(chars);
-
         guessWord.setText(maskedWord);
 
     }
 
     @FXML
     void grabAnswer() {
-
 
         hitBox2.setText(String.valueOf(maxHits));
         ArrayList<Character> guessesList = new ArrayList<>();
@@ -123,12 +124,14 @@ public class HelloController implements Initializable {
             guessesList.add(guessFromUser);
 
             guessBoxInput.clear();
-
             hits++;
             hitsBox.setText(String.valueOf(hits));
 
         }
         instructionTxt1.setText("GAME OVER");
+        guessBoxInput.setVisible(false);
+
+
     }
 
 
