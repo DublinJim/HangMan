@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,13 +12,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 public class HelloController implements Initializable {
-//regular variables
+
+    //regular variables
     boolean foundLetter;
     int hits = 1;
     int maxHits = 5;
     String wordToGuess;
     String maskedWord;
-
+    char guessFromUser;
+    char[] chars;
+    char[] astrikGuess;
 
     @FXML
     private TextField guessBoxInput;
@@ -45,9 +47,6 @@ public class HelloController implements Initializable {
     @FXML
     private Text testOutTxt;
 
-    @FXML
-    private Button playBtn;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -57,14 +56,13 @@ public class HelloController implements Initializable {
         guessBoxInput.clear();
         hitsBox.setText(String.valueOf(1));
         hitBox2.setText(String.valueOf(maxHits));
-      //  wordToGuess = "CAT";
         guessBoxInput.setVisible(false);
 
     }
 
 
     @FXML
-    void showTheInputs(ActionEvent event) {
+    void showTheInputs() {
         guessBoxInput.setVisible(true);
         guessBoxInput.requestFocus();
         wordToGuess = "CAT";
@@ -74,26 +72,24 @@ public class HelloController implements Initializable {
     @FXML
     void grabAnswer() {
 
-        char[] chars = wordToGuess.toCharArray();
+        chars = wordToGuess.toCharArray();
         //hide the word to be guessed
         for (int i = 0; i < wordToGuess.length(); i++) {
             chars[i] = 'X';
         }
 
-         maskedWord = String.valueOf(chars);
+        maskedWord = String.valueOf(chars);
 
         guessWord.setText(maskedWord);
         hitBox2.setText(String.valueOf(maxHits));
         ArrayList<Character> guessesList = new ArrayList<>();
 
-
         //get a single char from the user
 
-
-        char guessFromUser = guessBoxInput.getCharacters().charAt(0);
+        guessFromUser = guessBoxInput.getCharacters().charAt(0);
 
         //convert the word to guess to an array of chars
-        char[] astrikGuess = wordToGuess.toCharArray();
+        astrikGuess = wordToGuess.toCharArray();
         testOutTxt.setText(String.valueOf(guessFromUser));
 
         while (hits < maxHits) {
