@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -12,10 +13,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 public class HelloController implements Initializable {
-
+//regular variables
     boolean foundLetter;
     int hits = 1;
     int maxHits = 5;
+    String wordToGuess;
+    String maskedWord;
+
+
     @FXML
     private TextField guessBoxInput;
 
@@ -44,43 +49,51 @@ public class HelloController implements Initializable {
     private Button playBtn;
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         instructionTxt1.setText(" Begin - Enter your letter");
-
+        guessBoxInput.requestFocus();
         guessBoxInput.setPrefWidth(30);
         guessBoxInput.clear();
         hitsBox.setText(String.valueOf(1));
         hitBox2.setText(String.valueOf(maxHits));
+      //  wordToGuess = "CAT";
+        guessBoxInput.setVisible(false);
+
+    }
+
+
+    @FXML
+    void showTheInputs(ActionEvent event) {
+        guessBoxInput.setVisible(true);
+        guessBoxInput.requestFocus();
+        wordToGuess = "CAT";
 
     }
 
     @FXML
     void grabAnswer() {
 
-        String wordToGuess = "CAT";
         char[] chars = wordToGuess.toCharArray();
         //hide the word to be guessed
         for (int i = 0; i < wordToGuess.length(); i++) {
-
             chars[i] = 'X';
-
         }
 
-        String maskedWord = String.valueOf(chars);
+         maskedWord = String.valueOf(chars);
 
         guessWord.setText(maskedWord);
         hitBox2.setText(String.valueOf(maxHits));
         ArrayList<Character> guessesList = new ArrayList<>();
 
+
         //get a single char from the user
-        System.out.println(" input box size before = " + guessBoxInput.getLength());
+
+
         char guessFromUser = guessBoxInput.getCharacters().charAt(0);
-        System.out.println(" input box size = " + guessBoxInput.getLength());
+
         //convert the word to guess to an array of chars
         char[] astrikGuess = wordToGuess.toCharArray();
-
         testOutTxt.setText(String.valueOf(guessFromUser));
 
         while (hits < maxHits) {
@@ -112,7 +125,7 @@ public class HelloController implements Initializable {
             guessesList.add(guessFromUser);
 
             guessBoxInput.clear();
-            System.out.println(" input box size after clear = " + guessBoxInput.getLength());
+
             hits++;
             hitsBox.setText(String.valueOf(hits));
 
