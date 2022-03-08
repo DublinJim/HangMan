@@ -7,12 +7,12 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 public class HelloController implements Initializable {
 
-    private static char[] chars;
     boolean foundLetter;
     int hits = 1;
     int maxHits = 5;
@@ -29,7 +29,7 @@ public class HelloController implements Initializable {
     private Text hitsBox;
 
     @FXML
-    private Text instructionText1;
+    private Text instructionTxt1;
 
     @FXML
     private Text instructionTxt2;
@@ -40,13 +40,16 @@ public class HelloController implements Initializable {
     @FXML
     private Text testOutTxt;
 
+    @FXML
+    private Button playBtn;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        instructionText1.setText(" Begin - Enter your letter");
+        instructionTxt1.setText(" Begin - Enter your letter");
 
         guessBoxInput.setPrefWidth(30);
-        guessBoxInput.setMaxWidth(80);
         guessBoxInput.clear();
         hitsBox.setText(String.valueOf(1));
         hitBox2.setText(String.valueOf(maxHits));
@@ -81,7 +84,7 @@ public class HelloController implements Initializable {
         testOutTxt.setText(String.valueOf(guessFromUser));
 
         while (hits < maxHits) {
-            instructionText1.setText("Enter a letter");
+            instructionTxt1.setText("Enter a letter");
 
             guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
             instructionTxt2.setText("You chose " + guessFromUser);
@@ -93,6 +96,7 @@ public class HelloController implements Initializable {
 
                 if (guessFromUser == astrikGuess[i]) {
                     foundLetter = true;
+                    break;
                 }
             }
             if (foundLetter) {
@@ -109,12 +113,11 @@ public class HelloController implements Initializable {
 
             guessBoxInput.clear();
             System.out.println(" input box size after clear = " + guessBoxInput.getLength());
-
             hits++;
             hitsBox.setText(String.valueOf(hits));
 
         }
-        instructionText1.setText("GAME OVER");
+        instructionTxt1.setText("GAME OVER");
     }
 
 
