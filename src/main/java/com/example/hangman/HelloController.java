@@ -15,6 +15,7 @@ public class HelloController implements Initializable {
     //regular variables
     boolean foundLetter;
     boolean gameOver;
+    boolean alreadyUsed;
     int hits = 1;
     int maxHits = 5;
     String wordToGuess;
@@ -70,9 +71,10 @@ public class HelloController implements Initializable {
         guessBoxInput.requestFocus();
         hits = 1;
         hitsBox.setText(String.valueOf(hits));
-        instructionTxt1.setText("Enter a letter");
 
+        instructionTxt1.setText("Enter a letter");
         chars = wordToGuess.toCharArray();
+
         //hide the word to be guessed
         for (int i = 0; i < wordToGuess.length(); i++) {
             chars[i] = 'X';
@@ -87,40 +89,29 @@ public class HelloController implements Initializable {
 
         hitBox2.setText(String.valueOf(maxHits));
 
-        //get a single char from the user
-
-        guessFromUser = guessBoxInput.getCharacters().charAt(0);
-
         //convert the word to guess to an array of chars
         astrikGuess = wordToGuess.toCharArray();
-        testOutTxt.setText(String.valueOf(guessFromUser));
 
         while (hits < maxHits) {
+            /* ----------------------------------------------------------------------*/
             instructionTxt1.setText("Enter a letter");
-
             guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
             instructionTxt2.setText("You chose " + guessFromUser);
+            instructionTxt3.setText("");
 
-            // TODO: 3/7/2022 check the letter was not previously used
-
-            for (int i = 0; i < guessesList.size(); i++) {
+            for (int i = 0; i < guessesList.size(); i++)
                 if (guessFromUser == guessesList.get(i)) {
-
                     testOutTxt.setText("Already used .  try again");
+                    guessBoxInput.clear();
                     guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
-                    instructionTxt2.setText("You chose " + guessFromUser);
                 }
-            }
-
-            //Check for a correct letter
 
             for (int i = 0; i < astrikGuess.length; i++) {
-
                 if (guessFromUser == astrikGuess[i]) {
                     foundLetter = true;
-
                 }
             }
+
             if (foundLetter) {
                 testOutTxt.setText("Hit!");
                 instructionTxt3.setText("Well done");
@@ -129,19 +120,24 @@ public class HelloController implements Initializable {
             } else {
                 testOutTxt.setText("Not found");
                 instructionTxt3.setText("Try again");
-                guessBoxInput.clear();
             }
 
+            guessBoxInput.clear();
             guessesList.add(guessFromUser);
             guessBoxInput.clear();
             hits++;
             hitsBox.setText(String.valueOf(hits));
-
         }
+
+        //Check for a correct letter
+
+
+
+    /* ___________________________________________________________*/
         instructionTxt1.setText("GAME OVER");
         guessBoxInput.setVisible(false);
-
     }
+
 
 
     @FXML
