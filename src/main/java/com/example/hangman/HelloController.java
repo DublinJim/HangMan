@@ -14,6 +14,7 @@ public class HelloController implements Initializable {
 
     //regular variables
     boolean foundLetter;
+    boolean gameOver;
     int hits = 1;
     int maxHits = 5;
     String wordToGuess;
@@ -21,7 +22,7 @@ public class HelloController implements Initializable {
     char guessFromUser;
     char[] chars;
     char[] astrikGuess;
-
+    ArrayList<Character> guessesList = new ArrayList<>();
 
     @FXML
     private TextField guessBoxInput;
@@ -58,6 +59,7 @@ public class HelloController implements Initializable {
         hitBox2.setText(String.valueOf(maxHits));
         guessBoxInput.setVisible(false);
 
+
     }
 
 
@@ -66,10 +68,9 @@ public class HelloController implements Initializable {
         wordToGuess = "CAT";
         guessBoxInput.setVisible(true);
         guessBoxInput.requestFocus();
-        hits=1;
+        hits = 1;
         hitsBox.setText(String.valueOf(hits));
         instructionTxt1.setText("Enter a letter");
-
 
         chars = wordToGuess.toCharArray();
         //hide the word to be guessed
@@ -82,10 +83,9 @@ public class HelloController implements Initializable {
     }
 
     @FXML
-    void grabAnswer() {
+    void mainGame() {
 
         hitBox2.setText(String.valueOf(maxHits));
-        ArrayList<Character> guessesList = new ArrayList<>();
 
         //get a single char from the user
 
@@ -103,12 +103,22 @@ public class HelloController implements Initializable {
 
             // TODO: 3/7/2022 check the letter was not previously used
 
+            for (int i = 0; i < guessesList.size(); i++) {
+                if (guessFromUser == guessesList.get(i)) {
+
+                    testOutTxt.setText("Already used .  try again");
+                    guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
+                    instructionTxt2.setText("You chose " + guessFromUser);
+                }
+            }
+
             //Check for a correct letter
+
             for (int i = 0; i < astrikGuess.length; i++) {
 
                 if (guessFromUser == astrikGuess[i]) {
                     foundLetter = true;
-                    break;
+
                 }
             }
             if (foundLetter) {
@@ -119,10 +129,10 @@ public class HelloController implements Initializable {
             } else {
                 testOutTxt.setText("Not found");
                 instructionTxt3.setText("Try again");
+                guessBoxInput.clear();
             }
 
             guessesList.add(guessFromUser);
-
             guessBoxInput.clear();
             hits++;
             hitsBox.setText(String.valueOf(hits));
@@ -130,7 +140,6 @@ public class HelloController implements Initializable {
         }
         instructionTxt1.setText("GAME OVER");
         guessBoxInput.setVisible(false);
-
 
     }
 
