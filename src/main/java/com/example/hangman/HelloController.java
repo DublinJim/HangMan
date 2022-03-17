@@ -51,27 +51,38 @@ public class HelloController implements Initializable {
     @FXML
     private Text instructionTxt5;
 
+    @FXML
+    private Text bannerText;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        instructionTxt1.setText(" Begin - Enter your letter");
+
         guessBoxInput.requestFocus();
-        guessBoxInput.setPrefWidth(30);
         guessBoxInput.clear();
-        guessBoxInput.setVisible(false);
         hitsBox.setText(String.valueOf(1));
         hitBox2.setText(String.valueOf(maxHits));
 
 
+        bannerText.setText("Press 'Play' to begin.");
+
+        guessWord.setVisible(false);
+        guessBoxInput.setVisible(false);
+
+        instructionTxt1.setVisible(false);
+        instructionTxt2.setVisible(false);
+        instructionTxt4.setVisible(false);
+        instructionTxt5.setVisible(false);
     }
 
 
     @FXML
     void startTheGame() {
         wordToGuess = "CAT";
-
-
+        guessWord.setVisible(true);
+        instructionTxt1.setVisible(true);
+        instructionTxt1.setText(" Begin - Enter your letter");
+        bannerText.setText("The word to guess:");
         guessBoxInput.requestFocus();
         hits = 1;
         hitsBox.setText(String.valueOf(hits));
@@ -119,7 +130,8 @@ public class HelloController implements Initializable {
             }
 
             if (foundLetter) {
-                instructionTxt5.setText("Hit!");
+                instructionTxt5.setVisible(true);
+                instructionTxt5.setText("You guessed correctly");
                 instructionTxt3.setText("Well done");
                 //reset the flag
                 foundLetter = false;
