@@ -71,6 +71,7 @@ public class HelloController implements Initializable {
 
         instructionTxt1.setVisible(false);
         instructionTxt2.setVisible(false);
+        instructionTxt3.setVisible(false);
         instructionTxt4.setVisible(false);
         instructionTxt5.setVisible(false);
     }
