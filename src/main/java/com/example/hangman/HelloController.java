@@ -14,10 +14,9 @@ public class HelloController implements Initializable {
 
     //regular variables
     boolean foundLetter;
-    boolean gameOver;
-    boolean alreadyUsed;
+
     int hits = 1;
-    int maxHits = 5;
+     static int maxHits = 5;
     String wordToGuess;
     String maskedWord;
     char guessFromUser;
@@ -47,7 +46,11 @@ public class HelloController implements Initializable {
     private Text instructionTxt3;
 
     @FXML
-    private Text testOutTxt;
+    private Text instructionTxt4;
+
+    @FXML
+    private Text instructionTxt5;
+
 
 
     @Override
@@ -56,9 +59,9 @@ public class HelloController implements Initializable {
         guessBoxInput.requestFocus();
         guessBoxInput.setPrefWidth(30);
         guessBoxInput.clear();
+        guessBoxInput.setVisible(false);
         hitsBox.setText(String.valueOf(1));
         hitBox2.setText(String.valueOf(maxHits));
-        guessBoxInput.setVisible(false);
 
 
     }
@@ -67,14 +70,15 @@ public class HelloController implements Initializable {
     @FXML
     void startTheGame() {
         wordToGuess = "CAT";
-        guessBoxInput.setVisible(true);
+
+
         guessBoxInput.requestFocus();
         hits = 1;
         hitsBox.setText(String.valueOf(hits));
 
         instructionTxt1.setText("Enter a letter");
         chars = wordToGuess.toCharArray();
-
+        guessBoxInput.setVisible(true);
         //hide the word to be guessed
         for (int i = 0; i < wordToGuess.length(); i++) {
             chars[i] = 'X';
@@ -95,13 +99,15 @@ public class HelloController implements Initializable {
         while (hits < maxHits) {
             /* ----------------------------------------------------------------------*/
             instructionTxt1.setText("Enter a letter");
+
             guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
             instructionTxt2.setText("You chose " + guessFromUser);
             instructionTxt3.setText("");
 
             for (int i = 0; i < guessesList.size(); i++)
                 if (guessFromUser == guessesList.get(i)) {
-                    testOutTxt.setText("Already used .  try again");
+
+                    instructionTxt5.setText("Already used .  try again");
                     guessBoxInput.clear();
                     guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
                 }
@@ -113,12 +119,12 @@ public class HelloController implements Initializable {
             }
 
             if (foundLetter) {
-                testOutTxt.setText("Hit!");
+                instructionTxt5.setText("Hit!");
                 instructionTxt3.setText("Well done");
                 //reset the flag
                 foundLetter = false;
             } else {
-                testOutTxt.setText("Not found");
+                instructionTxt5.setText("Not found");
                 instructionTxt3.setText("Try again");
             }
 
@@ -129,7 +135,7 @@ public class HelloController implements Initializable {
             hitsBox.setText(String.valueOf(hits));
         }
 
-        //Check for a correct letter
+
 
 
 
