@@ -13,16 +13,16 @@
          <font>
             <Font size="31.0" />
          </font></Text>
-      <Text fx:id="bannerText" fill="WHITE" layoutX="296.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bannerText" textAlignment="CENTER" wrappingWidth="197.133056640625">
+      <Text fx:id="bannerText" fill="WHITE" layoutX="283.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bannerText" textAlignment="CENTER" wrappingWidth="197.133056640625">
          <font>
             <Font name="Leelawadee UI" size="19.0" />
          </font></Text>
-      <Text fx:id="instructionTxt4" fill="WHITE" layoutX="308.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: ariel;" text="instructionTxt4" />
-      <TextField fx:id="guessBoxInput" alignment="CENTER" layoutX="410.0" layoutY="221.0" onAction="#mainGame" prefHeight="27.0" prefWidth="23.0" />
-      <Text fx:id="guessWord" layoutX="348.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="guessWord" textAlignment="CENTER" />
-      <Text fx:id="instructionTxt5" fill="WHITE" layoutX="288.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: ariel;" text="instructionTxt5" textAlignment="CENTER" wrappingWidth="208.53623962402344" />
+      <Text fx:id="instructionTxt4" fill="WHITE" layoutX="337.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: ariel;" text="instructionTxt4" />
+      <TextField fx:id="guessBoxInput" alignment="CENTER" layoutX="370.0" layoutY="219.0" onAction="#mainGame" prefHeight="27.0" prefWidth="23.0" AnchorPane.leftAnchor="369.0" AnchorPane.rightAnchor="390.8" />
+      <Text fx:id="guessWord" layoutX="272.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="guessWord" textAlignment="CENTER" wrappingWidth="219.90936279296875" />
+      <Text fx:id="instructionTxt5" fill="WHITE" layoutX="276.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: ariel;" text="instructionTxt5" textAlignment="CENTER" wrappingWidth="208.53623962402344" />
       <Button layoutX="689.0" layoutY="35.0" mnemonicParsing="false" onAction="#quitApp" text="quit" />
-      <Text fx:id="instructionTxt1" fill="WHITE" layoutX="337.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="instructionTxt1" textAlignment="CENTER" />
+      <Text fx:id="instructionTxt1" fill="WHITE" layoutX="263.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="instructionTxt1" textAlignment="CENTER" wrappingWidth="236.82240295410156" />
       <Label layoutX="47.0" layoutY="43.0" text="of">
          <font>
             <Font size="16.0" />
@@ -39,8 +39,8 @@
          <font>
             <Font size="16.0" />
          </font></Text>
-      <Text fx:id="instructionTxt2" fill="WHITE" layoutX="210.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: ariel;" text="instructionTxt2" textAlignment="CENTER" wrappingWidth="364.80706787109375" />
-      <Text fx:id="instructionTxt3" fill="#efefef" layoutX="307.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: ariel;" />
+      <Text fx:id="instructionTxt2" fill="WHITE" layoutX="198.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: ariel;" text="instructionTxt2" textAlignment="CENTER" wrappingWidth="364.80706787109375" AnchorPane.leftAnchor="198.0" AnchorPane.rightAnchor="221.19293212890625" />
+      <Text fx:id="instructionTxt3" fill="#efefef" layoutX="281.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: ariel;" text="instructionTxt3" textAlignment="CENTER" wrappingWidth="197.133056640625" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="305.866943359375" />
       <Button fx:id="playBtn" layoutX="609.0" layoutY="36.0" mnemonicParsing="false" onAction="#startTheGame" text="Play" />
       
    </children>

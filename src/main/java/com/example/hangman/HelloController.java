@@ -129,8 +129,10 @@ public class HelloController implements Initializable {
                 }
             }
 
+            instructionTxt5.setVisible(true);
+
             if (foundLetter) {
-                instructionTxt5.setVisible(true);
+
                 instructionTxt5.setText("You guessed correctly");
                 instructionTxt3.setText("Well done");
                 //reset the flag
