@@ -79,6 +79,7 @@ public class HelloController implements Initializable {
 
     @FXML
     void startTheGame() {
+        // TODO: 3/19/2022 add a function to reset variables 
         wordToGuess = "CAT";
         guessWord.setVisible(true);
         instructionTxt1.setVisible(true);
@@ -87,7 +88,6 @@ public class HelloController implements Initializable {
         guessBoxInput.requestFocus();
         hits = 1;
         hitsBox.setText(String.valueOf(hits));
-
         instructionTxt1.setText("Enter a letter");
         chars = wordToGuess.toCharArray();
         guessBoxInput.setVisible(true);
