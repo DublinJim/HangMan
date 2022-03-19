@@ -20,6 +20,8 @@ public class HelloController implements Initializable {
     char guessFromUser;
     char[] chars;
     char[] astrikGuess;
+    int score;
+    int maxScore;
     ArrayList<Character> guessesList = new ArrayList<>();
 
     @FXML
@@ -90,6 +92,7 @@ public class HelloController implements Initializable {
         chars = wordToGuess.toCharArray();
         guessBoxInput.setVisible(true);
         //hide the word to be guessed
+        maxScore=wordToGuess.length();
         for (int i = 0; i < wordToGuess.length(); i++) {
             chars[i] = 'X';
         }
@@ -116,7 +119,6 @@ public class HelloController implements Initializable {
 
             for (int i = 0; i < guessesList.size(); i++)
                 if (guessFromUser == guessesList.get(i)) {
-
                     instructionTxt5.setText("Already used .  try again");
                     guessBoxInput.clear();
                     guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
@@ -127,11 +129,17 @@ public class HelloController implements Initializable {
                     chars[i] = astrikGuess[i];
                     maskedWord = String.valueOf(chars);
                     guessWord.setText(maskedWord);
+                    instructionTxt3.setVisible(true);
+                    instructionTxt3.setText("Well done");
                     instructionTxt5.setVisible(true);
                     instructionTxt5.setText("You guessed correctly");
-                    instructionTxt3.setText("Well done");
-break;
+                    score++;
+                    if (score  == maxScore ) {
+                        bannerText.setText("YOU WIN");
+                    }
+                    break;
                 } else {
+                    instructionTxt3.setVisible(true);
                     instructionTxt5.setVisible(true);
                     instructionTxt5.setText("Not found");
                     instructionTxt3.setText("Try again");
