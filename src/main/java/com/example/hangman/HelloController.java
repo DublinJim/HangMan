@@ -81,6 +81,7 @@ public class HelloController implements Initializable {
     void startTheGame() {
         // TODO: 3/19/2022 add a function to reset variables 
         wordToGuess = "CAT";
+        guessesList.clear();
         guessWord.setVisible(true);
         instructionTxt1.setVisible(true);
         instructionTxt1.setText(" Begin - Enter your letter");
