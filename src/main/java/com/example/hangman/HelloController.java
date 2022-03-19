@@ -89,14 +89,12 @@ public class HelloController implements Initializable {
         guessBoxInput.requestFocus();
         hits = 1;
         hitsBox.setText(String.valueOf(hits));
-        instructionTxt1.setText("Enter a letter");
+
         chars = wordToGuess.toCharArray();
         guessBoxInput.setVisible(true);
         //hide the word to be guessed
         maxScore=wordToGuess.length();
-        for (int i = 0; i < wordToGuess.length(); i++) {
-            chars[i] = 'X';
-        }
+        for (int i = 0; i < wordToGuess.length(); i++) chars[i] = 'X';
         maskedWord = String.valueOf(chars);
         guessWord.setText(maskedWord);
 
@@ -106,7 +104,7 @@ public class HelloController implements Initializable {
     void mainGame() {
 
         hitBox2.setText(String.valueOf(maxHits));
-
+        instructionTxt1.setText("Enter a letter");
         //convert the word to guess to an array of chars
         astrikGuess = wordToGuess.toCharArray();
 
@@ -137,6 +135,9 @@ public class HelloController implements Initializable {
                     score++;
                     if (score  == maxScore ) {
                         bannerText.setText("YOU WIN");
+                        instructionTxt1.setVisible(false);
+                        instructionTxt5.setVisible(false);
+                        instructionTxt3.setVisible(false);
                     }
                     break;
                 } else {
