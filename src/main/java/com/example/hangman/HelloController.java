@@ -4,6 +4,7 @@ package com.example.hangman;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,11 +13,8 @@ import javafx.scene.text.Text;
 
 public class HelloController implements Initializable {
 
-    //regular variables
-    boolean foundLetter;
-
     int hits = 1;
-     static int maxHits = 5;
+    static int maxHits = 5;
     String wordToGuess;
     String maskedWord;
     char guessFromUser;
@@ -126,28 +124,19 @@ public class HelloController implements Initializable {
 
             for (int i = 0; i < astrikGuess.length; i++) {
                 if (guessFromUser == astrikGuess[i]) {
-
-              chars[i]=astrikGuess[1];
+                    chars[i] = astrikGuess[i];
                     maskedWord = String.valueOf(chars);
                     guessWord.setText(maskedWord);
-                    foundLetter = true;
+                    instructionTxt5.setVisible(true);
+                    instructionTxt5.setText("You guessed correctly");
+                    instructionTxt3.setText("Well done");
+break;
+                } else {
+                    instructionTxt5.setVisible(true);
+                    instructionTxt5.setText("Not found");
+                    instructionTxt3.setText("Try again");
                 }
             }
-
-            instructionTxt5.setVisible(true);
-
-            if (foundLetter) {
-
-                instructionTxt5.setText("You guessed correctly");
-                instructionTxt3.setText("Well done");
-                //reset the flag
-
-                foundLetter = false;
-            } else {
-                instructionTxt5.setText("Not found");
-                instructionTxt3.setText("Try again");
-            }
-
             guessBoxInput.clear();
             guessesList.add(guessFromUser);
             guessBoxInput.clear();
@@ -155,15 +144,10 @@ public class HelloController implements Initializable {
             hitsBox.setText(String.valueOf(hits));
         }
 
-
-
-
-
-    /* ___________________________________________________________*/
+        /* ___________________________________________________________*/
         instructionTxt1.setText("GAME OVER");
         guessBoxInput.setVisible(false);
     }
-
 
 
     @FXML

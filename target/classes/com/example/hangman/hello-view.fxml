@@ -18,11 +18,17 @@
             <Font name="Leelawadee UI" size="19.0" />
          </font></Text>
       <Text fx:id="instructionTxt4" fill="WHITE" layoutX="337.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: ariel;" text="instructionTxt4" />
-      <TextField fx:id="guessBoxInput" alignment="CENTER" layoutX="370.0" layoutY="219.0" onAction="#mainGame" prefHeight="27.0" prefWidth="23.0" AnchorPane.leftAnchor="369.0" AnchorPane.rightAnchor="390.8" />
-      <Text fx:id="guessWord" layoutX="272.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="guessWord" textAlignment="CENTER" wrappingWidth="219.90936279296875" />
+      <TextField fx:id="guessBoxInput" alignment="CENTER" layoutX="361.0" layoutY="212.0" onAction="#mainGame" prefHeight="38.0" prefWidth="39.0" AnchorPane.leftAnchor="361.0" AnchorPane.rightAnchor="386.0">
+         <font>
+            <Font size="17.0" />
+         </font></TextField>
+      <Text fx:id="guessWord" layoutX="270.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="guessWord" textAlignment="CENTER" wrappingWidth="219.90936279296875">
+         <font>
+            <Font size="29.0" />
+         </font></Text>
       <Text fx:id="instructionTxt5" fill="WHITE" layoutX="276.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: ariel;" text="instructionTxt5" textAlignment="CENTER" wrappingWidth="208.53623962402344" />
       <Button layoutX="689.0" layoutY="35.0" mnemonicParsing="false" onAction="#quitApp" text="quit" />
-      <Text fx:id="instructionTxt1" fill="WHITE" layoutX="263.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="instructionTxt1" textAlignment="CENTER" wrappingWidth="236.82240295410156" />
+      <Text fx:id="instructionTxt1" fill="WHITE" layoutX="261.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="instructionTxt1" textAlignment="CENTER" wrappingWidth="236.82240295410156" />
       <Label layoutX="47.0" layoutY="43.0" text="of">
          <font>
             <Font size="16.0" />
