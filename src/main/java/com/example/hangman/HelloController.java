@@ -126,6 +126,10 @@ public class HelloController implements Initializable {
 
             for (int i = 0; i < astrikGuess.length; i++) {
                 if (guessFromUser == astrikGuess[i]) {
+
+              chars[i]=astrikGuess[1];
+                    maskedWord = String.valueOf(chars);
+                    guessWord.setText(maskedWord);
                     foundLetter = true;
                 }
             }
@@ -137,6 +141,7 @@ public class HelloController implements Initializable {
                 instructionTxt5.setText("You guessed correctly");
                 instructionTxt3.setText("Well done");
                 //reset the flag
+
                 foundLetter = false;
             } else {
                 instructionTxt5.setText("Not found");
