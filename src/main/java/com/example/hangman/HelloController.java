@@ -69,6 +69,10 @@ public class HelloController implements Initializable {
         guessWord.setVisible(false);
         guessBoxInput.setVisible(false);
 
+        turnOffTexts();
+    }
+
+    private void turnOffTexts() {
         instructionTxt1.setVisible(false);
         instructionTxt2.setVisible(false);
         instructionTxt3.setVisible(false);
@@ -155,8 +159,11 @@ public class HelloController implements Initializable {
         }
 
         /* ___________________________________________________________*/
+        turnOffTexts();
+        instructionTxt1.setVisible(true);
         instructionTxt1.setText("GAME OVER");
         guessBoxInput.setVisible(false);
+
     }
 
 
