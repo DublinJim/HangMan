@@ -140,9 +140,7 @@ public class HelloController implements Initializable {
                     score++;
                     if (score == maxScore) {
                         bannerText.setText("YOU WIN");
-                        instructionTxt1.setVisible(false);
-                        instructionTxt5.setVisible(false);
-                        instructionTxt3.setVisible(false);
+                        turnOffTexts();
                     }
                     break;
                 } else {
@@ -169,6 +167,7 @@ public class HelloController implements Initializable {
 
     private char checkCharFromUser(char guessFromUser) {
         if ((guessFromUser >= 'A' && guessFromUser <= 'Z')) {
+            instructionTxt2.setVisible(true);
             instructionTxt2.setText("You chose " + guessFromUser);
             instructionTxt3.setText("");
         } else {
