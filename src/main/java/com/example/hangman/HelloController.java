@@ -4,7 +4,6 @@ package com.example.hangman;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,8 +12,8 @@ import javafx.scene.text.Text;
 
 public class HelloController implements Initializable {
 
-    int hits = 1;
     static int maxHits = 5;
+    int hits = 1;
     String wordToGuess;
     String maskedWord;
     char guessFromUser;
@@ -63,7 +62,6 @@ public class HelloController implements Initializable {
         hitsBox.setText(String.valueOf(1));
         hitBox2.setText(String.valueOf(maxHits));
 
-
         bannerText.setText("Press 'Play' to begin.");
 
         guessWord.setVisible(false);
@@ -97,8 +95,10 @@ public class HelloController implements Initializable {
         chars = wordToGuess.toCharArray();
         guessBoxInput.setVisible(true);
         //hide the word to be guessed
-        maxScore=wordToGuess.length();
-        for (int i = 0; i < wordToGuess.length(); i++) chars[i] = 'X';
+        maxScore = wordToGuess.length();
+        for (int i = 0; i < wordToGuess.length(); i++) {
+            chars[i] = 'X';
+        }
         maskedWord = String.valueOf(chars);
         guessWord.setText(maskedWord);
 
@@ -117,15 +117,16 @@ public class HelloController implements Initializable {
             instructionTxt1.setText("Enter a letter");
 
             guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
-            instructionTxt2.setText("You chose " + guessFromUser);
-            instructionTxt3.setText("");
 
-            for (int i = 0; i < guessesList.size(); i++)
+            guessFromUser = checkCharFromUser(guessFromUser);
+
+            for (int i = 0; i < guessesList.size(); i++) {
                 if (guessFromUser == guessesList.get(i)) {
                     instructionTxt5.setText("Already used .  try again");
                     guessBoxInput.clear();
                     guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
                 }
+            }
 
             for (int i = 0; i < astrikGuess.length; i++) {
                 if (guessFromUser == astrikGuess[i]) {
@@ -137,7 +138,7 @@ public class HelloController implements Initializable {
                     instructionTxt5.setVisible(true);
                     instructionTxt5.setText("You guessed correctly");
                     score++;
-                    if (score  == maxScore ) {
+                    if (score == maxScore) {
                         bannerText.setText("YOU WIN");
                         instructionTxt1.setVisible(false);
                         instructionTxt5.setVisible(false);
@@ -164,6 +165,21 @@ public class HelloController implements Initializable {
         instructionTxt1.setText("GAME OVER");
         guessBoxInput.setVisible(false);
 
+    }
+
+    private char checkCharFromUser(char guessFromUser) {
+        if ((guessFromUser >= 'A' && guessFromUser <= 'Z')) {
+            instructionTxt2.setText("You chose " + guessFromUser);
+            instructionTxt3.setText("");
+        } else {
+            instructionTxt3.setVisible(true);
+            instructionTxt3.setText(guessFromUser + " is not a letter. try again");
+            guessBoxInput.clear();
+            guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
+            checkCharFromUser( guessFromUser);
+
+        }
+        return guessFromUser;
     }
 
 
