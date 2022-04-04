@@ -83,7 +83,7 @@ public class HelloController implements Initializable {
 
     @FXML
     void startTheGame() {
-        // TODO: 3/19/2022 add a function to reset variables 
+        // TODO: 4/4/2022 get a better array of words 
         wordToGuess = "CAT";
         guessesList.clear();
         guessWord.setVisible(true);
