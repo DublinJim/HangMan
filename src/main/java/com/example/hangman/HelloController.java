@@ -119,6 +119,7 @@ public class HelloController implements Initializable {
             guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
             instructionTxt2.setText("You chose " + guessFromUser);
             instructionTxt3.setText("");
+            guessFromUser = checkCharFromUser(guessFromUser);
 
             for (int i = 0; i < guessesList.size(); i++)
                 if (guessFromUser == guessesList.get(i)) {
@@ -164,6 +165,22 @@ public class HelloController implements Initializable {
         instructionTxt1.setText("GAME OVER");
         guessBoxInput.setVisible(false);
 
+    }
+
+    private char checkCharFromUser(char guessFromUser) {
+        if ((guessFromUser >= 'A' && guessFromUser <= 'Z')) {
+            instructionTxt2.setVisible(true);
+            instructionTxt2.setText("You chose " + guessFromUser);
+            instructionTxt3.setText("");
+        } else {
+            instructionTxt3.setVisible(true);
+            instructionTxt3.setText(guessFromUser + " is not a letter. try again");
+            guessBoxInput.clear();
+            guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
+            checkCharFromUser( guessFromUser);
+
+        }
+        return guessFromUser;
     }
 
 
