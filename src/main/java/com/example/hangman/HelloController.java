@@ -4,6 +4,7 @@ package com.example.hangman;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -120,8 +121,8 @@ public class HelloController implements Initializable {
 
             guessFromUser = checkCharFromUser(guessFromUser);
 
-            for (int i = 0; i < guessesList.size(); i++) {
-                if (guessFromUser == guessesList.get(i)) {
+            for (Character character : guessesList) {
+                if (guessFromUser == character) {
                     instructionTxt5.setText("Already used .  try again");
                     guessBoxInput.clear();
                     guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
@@ -175,7 +176,7 @@ public class HelloController implements Initializable {
             instructionTxt3.setText(guessFromUser + " is not a letter. try again");
             guessBoxInput.clear();
             guessFromUser = Character.toUpperCase(guessBoxInput.getCharacters().charAt(0));
-            checkCharFromUser( guessFromUser);
+            checkCharFromUser(guessFromUser);
 
         }
         return guessFromUser;
