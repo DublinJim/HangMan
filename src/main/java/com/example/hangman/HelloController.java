@@ -87,7 +87,7 @@ public class HelloController implements Initializable {
         guessesList.clear();
         guessWord.setVisible(true);
         instructionTxt1.setVisible(true);
-        instructionTxt1.setText(" Begin - Enter your letter");
+        instructionTxt1.setText(" Begin - Please enter your letter");
         bannerText.setText("The word to guess:");
         guessBoxInput.requestFocus();
         hits = 1;
